@@ -1,0 +1,70 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+}
+
+/* Full-screen background image */
+.bg {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Transparent click zone over the car (lower-left of image) */
+.car-zone {
+    position: fixed;
+    bottom: 20%;
+    left: 20%;
+    width: 18%;
+    height: 22%;
+    cursor: pointer;
+    z-index: 10;
+    /* Uncomment to debug the hit area: */
+    /* background: rgba(255,0,0,0.2); */
+}
+
+/* Sun — top right */
+.sun-wrap {
+    position: fixed;
+    top: 3vh;
+    right: 3vw;
+    width: clamp(70px, 8vw, 120px);
+    z-index: 20;
+    filter: drop-shadow(0 0 10px #ffc20f88);
+    transition: filter 1.2s ease;
+    cursor: default;
+}
+
+/* Hover: warm glow blooms and sun gently breathes */
+.sun-wrap:hover {
+    filter: drop-shadow(0 0 28px #ffd740cc) drop-shadow(0 0 60px #ffc20f55);
+    animation: breathe 2.4s ease-in-out infinite;
+}
+
+@keyframes breathe {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
